@@ -75,6 +75,47 @@
   </dependencies>
   <build>
     <finalName>bookexample</finalName>
+    <pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.4.3.RELEASE</version>
+                <executions>
+                    <execution>
+                      <goals>
+                        <goal>repackage</goal>
+                      </goals>
+                    </execution>
+                  </executions>
+            </plugin>
+
+            <!-- tag::wsdl[] -->
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.12.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <schemaLanguage>WSDL</schemaLanguage>
+                    <generatePackage>com.abc.xyz.abcd.wsdl</generatePackage>
+                    <generateDirectory>${project.build.sourceDirectory}</generateDirectory>
+                    <schemas>
+                        <schema>
+                            <url></url>
+                        </schema>
+                    </schemas>
+                </configuration>
+            </plugin>
+            <!-- end::wsdl[] -->
+        </plugins>
+    </pluginManagement>    
     <plugins>
 	    <plugin>
 	    	<groupId>com.google.cloud.tools</groupId>
